@@ -97,6 +97,37 @@ body::before {
     letter-spacing: 2px;
 }
 
+/* Menu Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -476,30 +507,120 @@ body::before {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Tablets et petits écrans (≤ 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section h2 {
+        font-size: 2.3rem;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
 
-    .hero .subtitle {
-        font-size: 1.2rem;
+    .skills-grid,
+    .tech-matrix {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile et tablets (≤ 768px) */
+@media (max-width: 768px) {
+    /* Navigation */
+    .hamburger {
+        display: flex;
     }
 
-    .section h2 {
-        font-size: 2rem;
+    .navbar .container {
+        flex-wrap: wrap;
+        position: relative;
     }
 
     .nav-links {
-        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(26, 26, 26, 0.98);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+    }
+
+    .nav-links li {
+        width: 100%;
     }
 
     .nav-links a {
+        display: block;
+        padding: 1rem 2rem;
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 2rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero .tagline {
         font-size: 0.9rem;
     }
 
+    /* Sections */
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    /* About */
+    .about-content {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    /* Grid */
     .skills-grid,
     .tech-matrix {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .contact-options {
@@ -513,26 +634,99 @@ body::before {
     }
 }
 
+/* Petits mobiles (≤ 480px) */
 @media (max-width: 480px) {
-    .hero {
-        padding: 4rem 0;
+    .container {
+        padding: 0 10px;
     }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .nav-links {
-        flex-direction: column;
+    /* Logo et navigation */
+    .logo-container {
         gap: 0.5rem;
     }
 
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hamburger {
+        width: 30px;
+    }
+
+    .hamburger span {
+        width: 20px;
+        height: 2.5px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 1.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.8rem;
+        word-spacing: 0.1em;
+    }
+
+    /* Sections */
     .section {
-        padding: 3rem 0;
+        padding: 2rem 0;
     }
 
     .section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* About */
+    .about-content {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .about-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    /* Cards */
+    .skill-card,
+    .tech-category {
+        padding: 1.5rem 1rem;
+    }
+
+    .skill-card h3,
+    .tech-category h3 {
+        font-size: 1.1rem;
+    }
+
+    .skill-card p {
+        font-size: 0.85rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Autres */
+    .contact-options {
+        flex-direction: column;
     }
 }

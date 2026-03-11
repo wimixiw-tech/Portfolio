@@ -74,3 +74,27 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Menu Hamburger
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navMenu = document.getElementById('nav-menu');
+
+// Ouvrir/fermer le menu
+hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Fermer le menu quand on clique sur un lien
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Fermer le menu en scrollant
+window.addEventListener('scroll', () => {
+    hamburgerBtn.classList.remove('active');
+    navMenu.classList.remove('active');
+});
