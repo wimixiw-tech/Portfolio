@@ -225,6 +225,11 @@ body::before {
     padding: 6rem 0;
 }
 
+/* Réduit l'espace au-dessus/au-dessous de la section Compétences */
+#skills.section {
+    padding: 4rem 0;
+}
+
 .section h2 {
     font-size: 2.5rem;
     color: var(--primary-color);
